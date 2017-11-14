@@ -1,4 +1,4 @@
-package com.streaming.counts
+package com.streaming.handle
 
 import kafka.serializer.StringDecoder
 import org.apache.spark.SparkConf

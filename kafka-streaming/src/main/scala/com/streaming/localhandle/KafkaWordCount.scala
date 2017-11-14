@@ -1,8 +1,8 @@
-package com.streaming.counts
+package com.streaming.localhandle
 
-import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.streaming.kafka.KafkaUtils
+import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * 实时读取KafKa中的数据  success

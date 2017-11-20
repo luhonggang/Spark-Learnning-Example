@@ -1,0 +1,41 @@
+{"uid":"7f7e5a24-c547-40e2-88c8-ae93daad370a","event_time":"1510733320997","os_type":"None","click_count":2}
+{"uid":"6cb660e9-7108-463c-9a54-31dea9108bc4","event_time":"1510733321197","os_type":"Windows Phone","click_count":8}
+{"uid":"e54bf90e-8995-4bf9-94f8-4b9ce4831276","event_time":"1510733321398","os_type":"Android","click_count":8}
+{"uid":"09806200-0d95-460c-a494-f9c2e62dcdde","event_time":"1510733321598","os_type":"IPhone OS","click_count":6}
+{"uid":"4d1bdb35-507c-43d6-9e94-4bbba369fceb","event_time":"1510733321799","os_type":"None","click_count":3}
+{"uid":"5a600451-3ffa-4e59-af06-ab20adba2089","event_time":"1510733322000","os_type":"Windows Phone","click_count":8}
+{"uid":"607f25b0-396d-48aa-8c70-69c42faa72b8","event_time":"1510733322202","os_type":"Android","click_count":0}
+{"uid":"dc7d73f0-4b50-4d55-ac0f-20200313c092","event_time":"1510733322403","os_type":"IPhone OS","click_count":8}
+{"uid":"b3c1fa25-041f-4311-a183-6024cb1a30cd","event_time":"1510733322603","os_type":"None","click_count":7}
+{"uid":"5fecd223-09dd-4897-9c09-5cfe85fe3be8","event_time":"1510733322804","os_type":"Windows Phone","click_count":1}
+{"uid":"519b7457-345b-4ccb-981a-9418420ec2b0","event_time":"1510733323005","os_type":"Android","click_count":6}
+{"uid":"7e87ce2d-26dc-4788-a688-54a7509cd975","event_time":"1510733323205","os_type":"IPhone OS","click_count":4}
+{"uid":"881c375e-99ec-4542-bac9-52ca14b5d3de","event_time":"1510733323406","os_type":"None","click_count":2}
+{"uid":"6932d4fe-0c6e-4e08-b656-ccb8f32653f5","event_time":"1510733323607","os_type":"Windows Phone","click_count":8}
+{"uid":"e211c969-0241-42e9-8282-d8b9c656ac1e","event_time":"1510733323807","os_type":"Android","click_count":3}
+{"uid":"0d035f44-98ae-4d23-b9be-406cfe97e806","event_time":"1510733324009","os_type":"IPhone OS","click_count":1}
+{"uid":"fb1d3ba7-5d64-49cb-bbe0-042e1be0f4be","event_time":"1510733324209","os_type":"None","click_count":3}
+{"uid":"835c4758-00e4-43a1-a46d-61ec178937df","event_time":"1510733324410","os_type":"Windows Phone","click_count":5}
+{"uid":"0e67e4b0-4e7c-4ec6-aafb-0980b7edb28d","event_time":"1510733324610","os_type":"Android","click_count":5}
+{"uid":"763cdf84-6ce5-4b96-bbde-02057a87bf35","event_time":"1510733324811","os_type":"IPhone OS","click_count":2}
+{"uid":"9307476b-2167-4c92-b24d-e2ab1cc79ef2","event_time":"1510733325012","os_type":"None","click_count":5}
+{"uid":"6940e7ad-44d0-44c3-b107-07222534624c","event_time":"1510733325212","os_type":"Windows Phone","click_count":3}
+{"uid":"92a16b11-2576-4759-b9a2-e04e4086dced","event_time":"1510733325413","os_type":"Android","click_count":6}
+{"uid":"18bc461c-5b34-4535-9f7e-69fdd9600016","event_time":"1510733325614","os_type":"IPhone OS","click_count":3}
+{"uid":"d3a13737-1733-46a0-8096-a7b55e3420a7","event_time":"1510733325814","os_type":"None","click_count":0}
+{"uid":"930a7cb3-4db6-426e-be34-b460f6bf1056","event_time":"1510733326015","os_type":"Windows Phone","click_count":8}
+{"uid":"fa0323c8-c088-4102-be37-f61696175ff6","event_time":"1510733326215","os_type":"Android","click_count":5}
+{"uid":"0f256cfd-76ef-48b7-8a3c-117a763e6993","event_time":"1510733326416","os_type":"IPhone OS","click_count":4}
+{"uid":"cd522941-d3a5-4313-aaed-13380beac4dc","event_time":"1510733326617","os_type":"None","click_count":6}
+{"uid":"7f844a2a-7fda-44de-9e65-a74bc3eec44d","event_time":"1510733326817","os_type":"Windows Phone","click_count":3}
+{"uid":"6e86937f-790d-4130-af32-e4e1061037fb","event_time":"1510733327018","os_type":"Android","click_count":9}
+{"uid":"9d576609-26bd-40d8-9d00-bfd636334291","event_time":"1510733327219","os_type":"IPhone OS","click_count":6}
+{"uid":"86340aa4-77ed-472b-8e70-6b02928d75f4","event_time":"1510733327419","os_type":"None","click_count":1}
+{"uid":"5a37868f-fd49-4307-b127-354e457df443","event_time":"1510733327620","os_type":"Windows Phone","click_count":6}
+{"uid":"e8b71184-18dc-42f7-aa85-3787be4e5798","event_time":"1510733327820","os_type":"Android","click_count":9}
+{"uid":"dacdcd35-522d-42d4-8fa7-ea7fd99f0ae4","event_time":"1510733328021","os_type":"IPhone OS","click_count":9}
+{"uid":"12ba96c2-ccd5-4e68-a7f7-14127c2b2b89","event_time":"1510733328222","os_type":"None","click_count":1}
+{"uid":"e20c5b19-d8ee-46a3-b4e4-d459a759a227","event_time":"1510733328422","os_type":"Windows Phone","click_count":0}
+{"uid":"92676a0c-8a4d-481f-9d14-2336efd0ac0c","event_time":"1510733328623","os_type":"Android","click_count":2}
+{"uid":"92ddbd50-d4ec-4a3c-8802-fb27a6c5cab0","event_time":"1510733328823","os_type":"IPhone OS","click_count":5}
+{"uid":"b60c4e79-725f-4606-9a13-9fe4d3dd1a9a","event_time":"1510733329024","os_type":"None","click_count":4}

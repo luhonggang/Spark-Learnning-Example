@@ -53,7 +53,7 @@ object KafkaMessageGenerator {
       producer.send(new KeyedMessage[String, String](topic, event.toString))
       println("Message sent: " + event)
 
-      Thread.sleep(200)
+      Thread.sleep(2000)
     }
   }
 }

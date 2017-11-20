@@ -15,19 +15,21 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
   */
 object PageViewStream {
   def main(args: Array[String]): Unit = {
-    var masterUrl = "local[2]"
-    if (args.length > 0) {
-      masterUrl = args(0)
-    }
-
+//    var masterUrl = "local[2]"
+//    if (args.length > 0) {
+//      masterUrl = args(0)
+//    }
+    /**
+      *  运行在yarn上面
+      */
     // Create a StreamingContext with the given master URL
-    val conf = new SparkConf().setMaster(masterUrl).setAppName("PageViewStream")
+    val conf = new SparkConf().setAppName("PageViewStream")//.setMaster(masterUrl)
     val ssc = new StreamingContext(conf, Seconds(5))
 
     // Kafka configurations
-    val topics = Set("PageViewStream")
-    //本地虚拟机ZK地址
-    val brokers = "Hive-EL67-0001:9092,Hive-EL67-0002:9092,Kafka-EL67-0001:9092"
+    val topics = Set("user_events")
+    //本地虚拟机ZK地址  Hive-EL67-0002:9092,Kafka-EL67-0001:9092
+    val brokers = "Hive-EL67-0001:9092"
     val kafkaParams = Map[String, String](
       "metadata.broker.list" -> brokers,
       "serializer.class" -> "kafka.serializer.StringEncoder")

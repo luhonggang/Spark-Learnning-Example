@@ -1,4 +1,4 @@
-package com.streaming.connect
+package com.streaming.utils
 import java.sql.{Connection, PreparedStatement, ResultSet}
 import org.apache.commons.dbcp.BasicDataSource
 
@@ -19,7 +19,7 @@ object ConnectPoolUtil {
     if(bs==null){
       bs = new BasicDataSource()
       bs.setDriverClassName("com.mysql.jdbc.Driver")
-      bs.setUrl("jdbc:mysql://localhost:3306/localdb")
+      bs.setUrl("jdbc:mysql://10.0.0.16:3306/localdb")
       bs.setUsername("lhg")
       bs.setPassword("123456")
       bs.setMaxActive(200)           //设置最大并发数

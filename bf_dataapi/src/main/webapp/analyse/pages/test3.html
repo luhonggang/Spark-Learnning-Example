@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title>Hourly分析</title>
+
+<script type="text/javascript" src="../resources/js/contants.js"></script>
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="../resources/css/style.min.css" rel="stylesheet">
+<link href="../resources/css/dateRange.css" rel="stylesheet">
+<link rel="stylesheet" href="../resources/css/layer.css" id="layui_layer_skinlayercss" style="">
+<link rel="stylesheet" href="../resources/css/layer.ext.css" id="layui_layer_skinlayercss" style="">
+<link rel="stylesheet" href="../resources/css/style.css" id="layui_layer_skinlayercss" style="">
+<script type="text/javascript" src="../resources/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../resources/js/dateRange.js"></script>
+    <!-- highcharts js -->
+    <script type="text/javascript" src="../resources/js/highcharts.js"></script>
+    <script type="text/javascript" src="../resources/js/exporting.js"></script>
+    <script type="text/javascript" src="../resources/js/json2.js"></script>
+    <script type="text/javascript" src="../resources/js/common.js"></script>
+
+<script type="text/javascript">
+            $(function(){
+                // 进行全局控制
+                Highcharts.setOptions({
+                    tooltip: {
+                        pointFormat: '{series.name}:<b>{point.percentage:0.01f}%</b>({point.y})'
+                    }
+                });
+                // 进行加载
+                var charts = new Highcharts.Chart({
+                    chart : {
+                        renderTo : 'container',
+                        type: 'pie'
+                    },
+                    title: {
+                        text: '浏览器使用情况'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            point: {
+                                events: {
+                                    click: function(){
+                                        var name = this.name;
+                                        showBrowserInfos(name);
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        name: '浏览器访问量',
+                        data: [
+                            {
+                                name: 'Chrome',
+                                y: 1086
+                            },
+                            {
+                                name: 'IE',
+                                y: 675
+                            },
+                            {
+                                name: 'Firefox',
+                                y: 201
+                            },
+                            {
+                                name: 'Safari',
+                                y: 124
+                            },
+                            ['Opera', 100],
+                            ['Others', 408]
+                        ]
+                    }]
+                }); 
+            });
+
+            // 显示子图
+            function showBrowserInfos(name) {
+                var datas = {
+                    'Chrome': {name: 'Chrome浏览器访问量', data: [['chrome_v1', 800],['chrome_v2', 200],['chrome_v3',86]]},
+                    'IE': {name: "IE浏览器访问量", data: [['IE_v1', 300],['IE_v2', 150],['IE_v3', 200],['IE_v4', 25]]},
+                    'Firefox': {name: 'Firefox浏览器访问量', data: [['Firefox_v1', 150], ['other', 51]]},
+                    'Safari': {name: 'Safari浏览器访问量', data: [['Safari_v1', 50],['Safari_v2', 70], ['unknow', 4]]},
+                    'Opera': {name: 'Opera浏览器访问量', data: [['Opera', 98],['unknow', 2]]},
+                    'Others': {name: '其他浏览器访问量', data: [['Others', 408]]}
+                };
+                var chart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'containerInfo',
+                        type: 'pie'
+                    },
+                    title: {
+                        text: name + '浏览器使用详情'
+                    },
+                    series:[]
+                });
+                chart.addSeries(datas[name]);
+            }
+        </script>
+        <title>测试3</title>
+    </head>
+    <body class="gray-bg">
+        <h1>测试3:浏览器使用情况(饼图)</h1>
+        <div class="row">
+            <div id="container" class="col-sm-6" style="height: 600px"></div>
+            <div id="containerInfo" class="col-sm-6" style="height: 600px"></div>
+        </div>
+    </body>
+</html>

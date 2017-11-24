@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beifeng.model.User">
+	<resultMap type="com.beifeng.model.User" id="baseResultMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="age" property="age"/>
+	</resultMap>
+	
+	<select id="getOneUser" parameterType="java.lang.Integer" resultMap="baseResultMap">
+		select * from user where id=#{id}
+	</select>
+	
+	<select id="getAllUsers" resultMap="baseResultMap">
+		select * from user
+	</select>
+</mapper>

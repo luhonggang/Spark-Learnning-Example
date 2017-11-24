@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title>Hourly分析</title>
+
+<script type="text/javascript" src="../resources/js/contants.js"></script>
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="../resources/css/style.min.css" rel="stylesheet">
+<link href="../resources/css/dateRange.css" rel="stylesheet">
+<link rel="stylesheet" href="../resources/css/layer.css" id="layui_layer_skinlayercss" style="">
+<link rel="stylesheet" href="../resources/css/layer.ext.css" id="layui_layer_skinlayercss" style="">
+<link rel="stylesheet" href="../resources/css/style.css" id="layui_layer_skinlayercss" style="">
+<script type="text/javascript" src="../resources/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../resources/js/dateRange.js"></script>
+    <!-- highcharts js -->
+    <script type="text/javascript" src="../resources/js/highcharts.js"></script>
+    <script type="text/javascript" src="../resources/js/exporting.js"></script>
+    <script type="text/javascript" src="../resources/js/json2.js"></script>
+    <script type="text/javascript" src="../resources/js/common.js"></script>
+
+		<script type="text/javascript">
+            $(function(){
+                // 进行配置设置
+                Highcharts.setOptions({
+                    global : {
+                        useUTC : false
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    lang: {
+                        printChart: '打印',
+                        downloadPNG: '下载PNG',
+                        downloadJPEG: '下载JPEG',
+                        downloadPDF: '下载PDF',
+                        downloadSVG: '下载SVG',
+                        contextButtonTitle: '下载'
+                    },
+                    colors: ['#ff7f50', '#6AF9C4', '#87cefa', '#da70d6', '#FFF263',
+              '#32cd32', '#6495ed', '#ff69b4', '#FF9655', '#ba55d3',
+              '#cd5c5c', '#ffa500', '#40e0d0', '#64E572', '#1e90ff',
+              '#ff6347', '#7b68ee', '#00fa9a', '#ffd700', '#6b8e23',
+              '#24CBE5', '#ff00ff', '#3cb371', '#b8860b', '#30e0e0',
+              '#058DC7', '#50B432', '#ED561B', '#DDDF00']
+                });
+                
+                // 进行加载
+                $("#container").highcharts({
+                    chart: {
+                        type: 'spline'
+                    },
+                    title: {
+                        text: '最近一周天气'
+                    },
+                    xAxis: {
+                        categories: ['周一', '周二', '周三', '周四', '周五', '周六', '周天']
+                    },
+                    yAxis: {
+                        title: {
+                            text: '温度(°C)'
+                        },
+                        plotLines: [{
+                                id: 'max_t_line',
+                                color: '#ff7f50',
+                                width: 1,
+                                value: 10.6,
+                                dashStyle: 'dash',
+                                label: {
+                                    text: '平均最高温度10.6°C',
+                                    align: 'left',
+                                    y: -5,
+                                    x: -10,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: '#ff7f50'
+                                    }
+                                }
+                                
+                            },
+                            {
+                                id: 'min_t_line',
+                                color: '#6AF9C4',
+                                width: 1,
+                                value: 5.5,
+                                dashStyle: 'dash',
+                                label: {
+                                    text: '平均最低温度5.5°C',
+                                    align: 'left',
+                                    y: -5,
+                                    x: -10,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: '#6AF9C4'
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    legend: {
+                        floating: true,
+                        align: 'left',
+                        verticalAlign: 'top',
+                        x: 80,
+                        y: 40,
+                        layout: 'vertical'
+                    },
+                    plotOptions: {
+                        series: {
+                            point: {
+                                events: {
+                                    mouseOver: function() {
+                                        var line_id = 'current_polt';
+                                        this.series.xAxis.removePlotLine(line_id);
+                                        this.series.xAxis.addPlotLine({
+                                            value: this.x,
+                                            width: 2,
+                                            color: '#FFE4B5',
+                                            id: line_id
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    series:[
+                        {
+                            name: '最高温度',
+                            data: [14,10,7,9,11,13,10]
+                        },
+                        {
+                            name: '最低温度',
+                            data: [9,4,1,4,5,8,7]
+                        }],
+                    tooltip: {
+                        borderColor: '#EBBA95',
+                        borderWidth: 2,
+                        borderRadius: 20,
+                        shared: true,
+                        formatter: function() {
+                            var s = '<b>' + this.x + '</b>';
+                            var sum = 0;
+                            $.each(this.points, function () {
+                                s += '<br/>' + this.series.name + ': ' + this.y + '°C';
+                                sum += this.y;
+                            });
+                            s += '<br/>平均温度: ' + sum/2.0 + '°C';
+                            return s;
+                        }
+                    }
+                });
+            });
+        </script>
+        <title>测试1</title>
+    </head>
+    <body class="gray-bg">
+        <h1>案例1:气象图（曲线图）</h1>
+        <div class="row">
+	        <div id="container" class="col-sm-12"></div>
+        </div>
+    </body>
+</html>

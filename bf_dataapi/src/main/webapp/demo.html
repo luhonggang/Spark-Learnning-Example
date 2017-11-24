@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试动态highcharts</title>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#container").highcharts({
+			title: {
+				text: "动态数据加载"
+			},
+			xAxis: {
+				categories: ["周一", "周二", "周三", "周四", "周五", "周六", "周天"]
+			},
+			yAxis: {
+				title: {
+					text: "温度"
+				}
+			},
+			series: []
+		});
+		
+		// 第一次加载
+		loadData($("#container").highcharts());
+		$("#reloadbt").click(function(){
+			loadData($("#container").highcharts());ss
+		});
+	});
+	
+	function loadData(charts) {
+		$.get("test/json", null, function(data){
+			var series = {
+					name: '一周温度',
+					data: [],
+					color: charts.options.colors[0]
+			};
+			series.data.push(data["周一"]);
+			series.data.push(data["周二"]);
+			series.data.push(data["周三"]);
+			series.data.push(data["周四"]);
+			series.data.push(data["周五"]);
+			series.data.push(data["周六"]);
+			series.data.push(data["周天"]);
+			
+			$.each(charts.series, function(i, item){
+				item.remove();
+			});
+			
+			
+			charts.addSeries(series);
+		}, "json");
+	}
+</script>
+</head>
+<body>
+	<h1>动态数据加载</h1>
+	<div id="container"></div>
+	<button id="reloadbt">重新加载数据</button>
+</body>
+</html>

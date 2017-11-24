@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title>Hourly分析</title>
+
+<script type="text/javascript" src="../resources/js/contants.js"></script>
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="../resources/css/style.min.css" rel="stylesheet">
+<link href="../resources/css/dateRange.css" rel="stylesheet">
+<link rel="stylesheet" href="../resources/css/layer.css" id="layui_layer_skinlayercss" style="">
+<link rel="stylesheet" href="../resources/css/layer.ext.css" id="layui_layer_skinlayercss" style="">
+<link rel="stylesheet" href="../resources/css/style.css" id="layui_layer_skinlayercss" style="">
+    <script type="text/javascript" src="../resources/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../resources/js/dateRange.js"></script>
+    <!-- highcharts js -->
+    <!-- <script type="text/javascript" src="../resources/js/highcharts.js"></script> -->
+    <script type="text/javascript" src="../resources/js/highmaps.src.js"></script>
+    <script type="text/javascript" src="../resources/js/exporting.js"></script>
+    <script type="text/javascript" src="../resources/js/json2.js"></script>
+    <script type="text/javascript" src="../resources/js/common.js"></script>
+    <script type="text/javascript" src="../resources/js/cn-all.js"></script>
+    <script type="text/javascript" src="../resources/js/provinceConvert.js"></script>
+		<script type="text/javascript">
+            String.prototype.startWith=function(str){
+                if(str==null||str==""||this.length==0||str.length>this.length)
+                    return false;
+                if(this.substr(0,str.length)==str)
+                    return true;
+                else
+                    return false;
+                return true;
+            };
+
+            var provinceMap = {
+                "上海":["上海市", "cn-sh"],
+                "云南": ["云南省", "cn-yn"], 
+                "内蒙古": ["内蒙古自治区", "cn-nm"],
+                "吉林": ["吉林省", "cn-jl"], 
+                "四川": ["四川省", "cn-sc"], 
+                "天津": ["天津市", "cn-tj"], 
+                "宁夏": ["宁夏回族自治区", "cn-nx"], 
+                "安徽": ["安徽省", "cn-ah"],
+                "山东": ["山东省", "cn-sd"],
+                "山西": ["山西省", "cn-sx"],
+                "陕西": ["陕西省", "cn-sa"],
+                "广东": ["广东省", "cn-gd"],
+                "广西": ["广西省", "cn-gx"],
+                "新疆": ["新疆维吾尔自治区", "cn-xj"],
+                "江苏": ["江苏省", "cn-js"],
+                "江西": ["江西省", "cn-jx"],
+                "河北": ["河北省", "cn-hb"],
+                "河南": ["河南省", "cn-he"],
+                "浙江": ["浙江省", "cn-zj"],
+                "海南": ["海南省", "cn-ha"],
+                "湖北": ["湖北省", "cn-hu"],
+                "湖南": ["湖南省", "cn-hn"],
+                "甘肃": ["甘肃省", "cn-gs"],
+                "福建": ["福建省", "cn-fj"],
+                "西藏": ["西藏自治区", "cn-xz"],
+                "贵州": ["贵州省", "cn-gz"],
+                "辽宁": ["辽宁省", "cn-ln"],
+                "重庆": ["重庆市", "cn-cq"],
+                "青海": ["青海省", "cn-qh"],
+                "黑龙江": ["黑龙江省", "cn-hl"],
+                "北京": ["北京市", "cn-bj"]
+            };
+
+            function cnprovincenameformatted(province) {
+                for (var p in provinceMap) {
+                    if (province.startWith(p)) {
+                        return provinceMap[p];
+                    }
+                }
+                return null;
+            }
+            
+            $(function(){
+                var visitProvinceData = "{'data':[{'province':'浙江省','user':275},{'province':'河南省','user':373},{'province':'河北省','user':427},{'province':'江西省','user':238},{'province':'江苏省','user':240},{'province':'新疆','user':20},{'province':'广西省','user':252},{'province':'广东省','user':415},{'province':'山西省','user':237},{'province':'山东省','user':659},{'province':'安徽省','user':447},{'province':'宁夏','user':11},{'province':'天津市','user':458},{'province':'四川省','user':137},{'province':'吉林省','user':171},{'province':'台湾','user':3},{'province':'北京市','user':224},{'province':'内蒙古','user':69},{'province':'云南省','user':203},{'province':'黑龙江省','user':227},{'province':'上海市','user':891},{'province':'香港','user':62},{'province':'青海省','user':15},{'province':'陕西省','user':312},{'province':'重庆市','user':274},{'province':'辽宁省','user':367},{'province':'贵州省','user':100},{'province':'西藏','user':1},{'province':'福建省','user':582},{'province':'甘肃省','user':80},{'province':'澳门','user':3},{'province':'湖南省','user':450},{'province':'湖北省','user':386},{'province':'海南省','user':93}]}";
+                var data = [];
+                var i=0;
+                $.each(eval("(" + visitProvinceData + ")").data, function(i, item){
+                    var province = cnprovincenameformatted(item.province);
+                    if (province) {
+                        var cnname = province[0];
+                        var hckey = province[1];
+                        var value = item.user;
+                        data.push({"hc-key": hckey, "value":value, "cnname":cnname, id: i});
+                        i = i+1;
+                    }
+                });
+                $('#container').highcharts('Map', {
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
+                        }
+                    },
+                    tooltip: {
+                        pointFormat: '{point.cnname}:<b>{point.value}</b>'
+                    },
+                    colorAxis: {
+                        min: 0,
+                        minColor: '#EEEEFF',
+                        maxColor: '#000022',
+                        stops: [
+                            [0, '#EFEFFF'],
+                            [0.67, '#4444FF'],
+                            [1, '#000022']
+                        ]
+                    },
+                    plotOptions: {
+                        series: {
+                            cursor: 'pointer',
+                            point: {
+                                events: {
+                                    click: function(){
+                                        console.log(this.id)
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    series : [{
+                        data : data,
+                        mapData: Highcharts.maps['countries/cn/cn-all'],
+                        joinBy: 'hc-key',
+                        name: '中国各省份访问量图',
+                        states: {
+                            hover: {
+                                color: '#BADA55'
+                            }
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.cnname}'
+                        }
+                    }]
+                });
+            });
+        </script>
+        <title>测试4</title>
+    </head>
+    <body class="gray-bg">
+        <h1>测试4：中国各省份访问量图</h1>
+        <span id="container" style="height:600px; width: 900px"></span>
+    </body>
+</html>

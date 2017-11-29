@@ -37,7 +37,30 @@
             <artifactId>spark-sql_2.10</artifactId>
             <version>1.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.fommil.netlib</groupId>
+            <artifactId>all</artifactId>
+            <version>1.1.2</version>
+            <type>pom</type>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-mllib -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_2.10</artifactId>
+            <version>1.6.0</version>
+          <!--  <scope>provided</scope>-->
+        </dependency>
 
+        <!--<dependency>
+            <groupId>com.googlecode.netlib-java</groupId>
+            <artifactId>netlib</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.fommil.netlib</groupId>
+            <artifactId>all</artifactId>
+            <version>1.2-SNAPSHOT</version>
+        </dependency>-->
 
         <!-- 数据库连接驱动-->
         <dependency>
@@ -95,4 +118,16 @@
             </plugin>
         </plugins>
     </build>
+   <!-- <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>-->
 </project>
